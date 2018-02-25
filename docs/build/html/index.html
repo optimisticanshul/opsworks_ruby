@@ -1,0 +1,161 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to opsworks_ruby &#8212; opsworks_ruby 1.8.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.8.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             accesskey="N">next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">opsworks_ruby 1.8.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-opsworks-ruby">
+<h1>Welcome to opsworks_ruby<a class="headerlink" href="#welcome-to-opsworks-ruby" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/ajgon/opsworks_ruby">opsworks_ruby</a> is a set of <a class="reference external" href="https://www.chef.io/">chef</a> recipes to ease the deployment to <a class="reference external" href="https://aws.amazon.com/opsworks/">AWS OpsWorks</a> service. It was created, when
+<a class="reference external" href="https://blogs.aws.amazon.com/application-management/post/Tx1T5HNA1TSU8NH/AWS-OpsWorks-Now-Supports-Chef-12-for-Linux">Amazon introduced Chef 12 to OpsWorks stack</a> without support for any chef recipes. The main goal of this project is
+to mimic Chef 11 OpsWorks stack as close as possible.</p>
+<p>The code is open source, and <a class="reference external" href="https://github.com/ajgon/opsworks_ruby">available on github</a>.</p>
+<p>The main documentation for the site is organized into a couple sections:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#user-docs"><span class="std std-ref">User Documentation</span></a></li>
+<li><a class="reference internal" href="#cookbook-docs"><span class="std std-ref">Cookbook Documentation</span></a></li>
+<li><a class="reference internal" href="#about-docs"><span class="std std-ref">About opsworks_ruby</span></a></li>
+</ul>
+<div class="toctree-wrapper compound" id="user-docs">
+<p class="caption"><span class="caption-text">User Documentation</span><a class="headerlink" href="#user-docs" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#super-quick-start">Super Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#quick-start">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#full-configuration">Full configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#deployment-fails-with-errors-regarding-application-code">Deployment fails with errors regarding application code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#ssl-not-working-in-legacy-browsers">SSL not working in legacy browsers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#some-applications-on-my-layer-deploys-some-of-them-not">Some applications on my Layer deploys, some of them not</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html#environment-variables-fail-to-update-on-clean-restart">Environment variables fail to update on clean restart</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="cookbook-docs">
+<p class="caption"><span class="caption-text">Cookbook Documentation</span><a class="headerlink" href="#cookbook-docs" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Supported Technologies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Requirements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#cookbooks">Cookbooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements.html#platform">Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="attributes.html">Attributes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#stack-attributes">Stack attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#cross-application-attributes">Cross-application attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#application-attributes">Application attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="attributes.html#logrotate-attributes">Logrotate Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="recipes.html">Recipes</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="about-docs">
+<p class="caption"><span class="caption-text">About opsworks_ruby</span><a class="headerlink" href="#about-docs" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#running-tests">Running Tests</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="team.html">Author and Contributors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="team.html#author">Author</a></li>
+<li class="toctree-l2"><a class="reference internal" href="team.html#contributors">Contributors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="next chapter">Getting Started</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             >next</a> |</li>
+        <li class="nav-item nav-item-0"><a href="#">opsworks_ruby 1.8.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Igor Rzegocki &lt;igor@rzegocki.pl&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>

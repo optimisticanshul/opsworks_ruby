@@ -1,0 +1,142 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Troubleshooting &#8212; opsworks_ruby 1.8.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.8.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Supported Technologies" href="support.html" />
+    <link rel="prev" title="Getting Started" href="getting_started.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="support.html" title="Supported Technologies"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opsworks_ruby 1.8.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="deployment-fails-with-errors-regarding-application-code">
+<h2>Deployment fails with errors regarding application code<a class="headerlink" href="#deployment-fails-with-errors-regarding-application-code" title="Permalink to this headline">¶</a></h2>
+<p>If you have enabled <code class="docutils literal"><span class="pre">app['framework']['envs_in_console']</span></code> parameter, always disable it first and check if error occurs
+again. This parameter is a “hack” on rails <code class="docutils literal"><span class="pre">config/application.rb</span></code> file, which inserts all application environment variables
+before initializing the Rails stack. This may cause some problems (in very rare cases), and break this file.</p>
+</div>
+<div class="section" id="ssl-not-working-in-legacy-browsers">
+<h2>SSL not working in legacy browsers<a class="headerlink" href="#ssl-not-working-in-legacy-browsers" title="Permalink to this headline">¶</a></h2>
+<p>By default webserver is configured to follow strict SSL security standards, <a class="reference external" href="https://cipherli.st/">covered in this article</a>. However,
+old browsers (like IE &lt; 9 or Android &lt; 2.2) wouldn’t work with this configuration very well. If your application needs
+a support for those browsers, set <code class="docutils literal"><span class="pre">app['webserver']['ssl_for_legacy_browsers']</span></code> to true.</p>
+</div>
+<div class="section" id="some-applications-on-my-layer-deploys-some-of-them-not">
+<h2>Some applications on my Layer deploys, some of them not<a class="headerlink" href="#some-applications-on-my-layer-deploys-some-of-them-not" title="Permalink to this headline">¶</a></h2>
+<p>Check the <code class="docutils literal"><span class="pre">node['applications']</span></code> parameter in <a class="reference internal" href="attributes.html#attributes"><span class="std std-ref">Attributes</span></a> section.
+If set, it narrows down the list of applications allowed to deploy, to its value.
+If not sure what to do - try to remove from your Stack/Layer config and see if this helps.</p>
+</div>
+<div class="section" id="environment-variables-fail-to-update-on-clean-restart">
+<h2>Environment variables fail to update on clean restart<a class="headerlink" href="#environment-variables-fail-to-update-on-clean-restart" title="Permalink to this headline">¶</a></h2>
+<p>If you changed <code class="docutils literal"><span class="pre">after_deploy</span></code> method in your appserver, to do a <a class="reference external" href="https://github.com/ajgon/opsworks_ruby/blob/43c604f6b391185cac0faa7431df1cf687b844fa/templates/default/appserver.service.erb#L75">clean restart</a>, please not that <code class="docutils literal"><span class="pre">ENV</span></code> variables,
+are not refreshed from applicatino perspective. More details are covered in <a class="reference external" href="https://github.com/ajgon/opsworks_ruby/issues/142">Issue #142</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Troubleshooting</a><ul>
+<li><a class="reference internal" href="#deployment-fails-with-errors-regarding-application-code">Deployment fails with errors regarding application code</a></li>
+<li><a class="reference internal" href="#ssl-not-working-in-legacy-browsers">SSL not working in legacy browsers</a></li>
+<li><a class="reference internal" href="#some-applications-on-my-layer-deploys-some-of-them-not">Some applications on my Layer deploys, some of them not</a></li>
+<li><a class="reference internal" href="#environment-variables-fail-to-update-on-clean-restart">Environment variables fail to update on clean restart</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getting_started.html"
+                        title="previous chapter">Getting Started</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="support.html"
+                        title="next chapter">Supported Technologies</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/troubleshooting.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="support.html" title="Supported Technologies"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getting_started.html" title="Getting Started"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">opsworks_ruby 1.8.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Igor Rzegocki &lt;igor@rzegocki.pl&gt;.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.3.
+    </div>
+  </body>
+</html>
