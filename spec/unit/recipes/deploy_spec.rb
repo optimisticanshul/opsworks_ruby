@@ -12,7 +12,7 @@ describe 'opsworks_ruby::deploy' do
   let(:chef_runner) do
     ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04') do |solo_node|
       deploy = node['deploy']
-      deploy['dummy_project']['scm'].delete('ssh_wrapper')
+      deploy['dummy_project']['source'].delete('ssh_wrapper')
       solo_node.set['deploy'] = deploy
     end
   end
@@ -114,8 +114,8 @@ describe 'opsworks_ruby::deploy' do
       let(:chef_runner) do
         ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '14.04') do |solo_node|
           deploy = node['deploy']
-          deploy['dummy_project']['scm'].delete('ssh_wrapper')
-          deploy['dummy_project']['scm']['generated_ssh_wrapper'] = '/var/tmp/my-git-ssh-wrapper.sh'
+          deploy['dummy_project']['source'].delete('ssh_wrapper')
+          deploy['dummy_project']['source']['generated_ssh_wrapper'] = '/var/tmp/my-git-ssh-wrapper.sh'
           solo_node.set['deploy'] = deploy
         end
       end

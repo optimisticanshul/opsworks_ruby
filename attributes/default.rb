@@ -35,10 +35,10 @@ default['defaults']['global']['logrotate_options'] = %w[
 
 default['defaults']['database']['adapter'] = 'sqlite3'
 
-# scm
+# source
 ## common
 
-default['defaults']['scm']['remove_scm_files'] = true
+default['defaults']['source']['remove_scm_files'] = true
 
 # appserver
 ## common

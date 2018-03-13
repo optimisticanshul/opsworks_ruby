@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe Drivers::Scm::Git do
+describe Drivers::Source::Git do
   let(:driver) { described_class.new(dummy_context(node), aws_opsworks_app) }
 
   it 'receives and exposes app and node' do
@@ -12,7 +12,7 @@ describe Drivers::Scm::Git do
   end
 
   it 'has the correct driver_type' do
-    expect(driver.driver_type).to eq('scm')
+    expect(driver.driver_type).to eq('source')
   end
 
   context 'validate adapter and engine' do
@@ -42,7 +42,10 @@ describe Drivers::Scm::Git do
     it 'adapter = wrong, engine = missing' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { adapter: 'svn' } } })), aws_opsworks_app(app_source: nil)
+          dummy_context(
+            node(deploy: { dummy_project: { source: { adapter: 'svn' } } })
+          ),
+          aws_opsworks_app(app_source: nil)
         ).out
       end.to raise_error ArgumentError,
                          "Incorrect :node engine, expected #{described_class.allowed_engines.inspect}, got 'svn'."
@@ -51,7 +54,7 @@ describe Drivers::Scm::Git do
     it 'adapter = wrong, engine = wrong' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { adapter: 'svn' } } })),
+          dummy_context(node(deploy: { dummy_project: { source: { adapter: 'svn' } } })),
           aws_opsworks_app(app_source: { type: 'svn' })
         ).out
       end.to raise_error ArgumentError,
@@ -61,7 +64,7 @@ describe Drivers::Scm::Git do
     it 'adapter = wrong, engine = correct' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { adapter: 'svn' } } })), aws_opsworks_app
+          dummy_context(node(deploy: { dummy_project: { source: { adapter: 'svn' } } })), aws_opsworks_app
         ).out
       end.not_to raise_error
     end
@@ -69,7 +72,10 @@ describe Drivers::Scm::Git do
     it 'adapter = correct, engine = missing' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { adapter: 'git' } } })), aws_opsworks_app(app_source: nil)
+          dummy_context(
+            node(deploy: { dummy_project: { source: { adapter: 'git' } } })
+          ),
+          aws_opsworks_app(app_source: nil)
         ).out
       end.not_to raise_error
     end
@@ -77,7 +83,7 @@ describe Drivers::Scm::Git do
     it 'adapter = correct, engine = wrong' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { adapter: 'git' } } })),
+          dummy_context(node(deploy: { dummy_project: { source: { adapter: 'git' } } })),
           aws_opsworks_app(app_source: { type: 'svn' })
         ).out
       end.to raise_error ArgumentError,
@@ -87,7 +93,7 @@ describe Drivers::Scm::Git do
     it 'adapter = correct, engine = correct' do
       expect do
         described_class.new(
-          dummy_context(node(deploy: { dummy_project: { scm: { type: 'git' } } })), aws_opsworks_app
+          dummy_context(node(deploy: { dummy_project: { source: { type: 'git' } } })), aws_opsworks_app
         ).out
       end.not_to raise_error
     end
@@ -97,9 +103,8 @@ describe Drivers::Scm::Git do
     after(:each) do
       expect(@item.raw_out[:ssh_key]).to eq '--- SSH KEY ---'
       expect(@item.out).to eq(
-        scm_provider: Chef::Provider::Git,
         revision: 'master',
-        repository: 'git@git.example.com:repo/project.git',
+        url: 'git@git.example.com:repo/project.git',
         enable_submodules: false,
         ssh_wrapper: 'ssh-wrap',
         remove_scm_files: true
@@ -108,7 +113,7 @@ describe Drivers::Scm::Git do
 
     it 'taken from engine' do
       node_data = node
-      node_data['deploy']['dummy_project']['scm'].delete('ssh_key')
+      node_data['deploy']['dummy_project']['source'].delete('ssh_key')
       @item = described_class.new(dummy_context(node_data), aws_opsworks_app)
     end
 
